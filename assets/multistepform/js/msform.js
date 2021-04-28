@@ -7,10 +7,10 @@ var animating; //flag to prevent quick multi-click glitches
 
 $(".next").click(function () {
 	var btn = $(this)[0].id;
-	if (btn == "orderType") TIPO = getTIPO(); loadDuration();
+	if (btn == "orderType") TIPO = getTIPO();
 	if (TIPO == null) return
 
-	if (btn == "orderPrice") PRECO = getPRECO();
+	if (btn == "orderPrice") PRECO = getPRECO(); loadDuration();
 	if (PRECO == undefined) return
 
 	if (btn == "orderDuration") DURACAO = getDURACAO();
@@ -26,6 +26,7 @@ $(".next").click(function () {
 	if (EXTRAS == null) return
 
 	loadJSON();
+
 	if (animating) return false;
 	animating = true;
 
@@ -100,10 +101,10 @@ $(".previous").click(function () {
 });
 
 
-//Select type of order  /div)
+//Select type of order  (imagens)
 $(document).on('click', '.typeArea', function () {
 	var element = $(this)[0].children[0];
-	if ($(".typeAreaSelected")[0]) {		
+	if ($(".typeAreaSelected")[0]) {
 		if (element.classList.contains('typeAreaSelected')) {
 			element.classList.remove('typeAreaSelected')
 		} else {
@@ -148,6 +149,22 @@ $(document).on('click', '.drinkArea', function () {
 });
 
 
+//Select category of order  (imagens)
+$(document).on('click', '.categoryArea', function () {
+	var element = $(this)[0].children[0];
+	if ($(".categoryAreaSelected")[0]) {
+		if (element.classList.contains('categoryAreaSelected')) {
+			element.classList.remove('categoryAreaSelected')
+		} else {
+			$(".categoryAreaSelected")[0].classList.remove("categoryAreaSelected");
+			element.classList.add('categoryAreaSelected');
+		}
+	} else {
+		element.classList.add('categoryAreaSelected');
+	}
+});
+
+
 let pedido = {}
 let TIPO = "";
 let PRECO = "";
@@ -165,7 +182,6 @@ function loadJSON() {
 	pedido.categoria = CATEGORIA;
 	pedido.extras = EXTRAS;
 	pedido.bebida = BEBIDA;
-	//console.log(pedido);
 }
 
 
@@ -197,7 +213,6 @@ function loadDuration() {
 
 function getTIPO() {
 	const type = document.getElementsByClassName("typeAreaSelected");
-	console.log(type)
 	if (type[0] == undefined) {
 		document.getElementById("typeError").hidden = false;
 		setTimeout(function () {
@@ -224,8 +239,15 @@ function getCLASSIFICACAO() {
 }
 
 function getCATEGORIA() {
-	var checkRadio = document.querySelector('input[name="category"]:checked');
-	return checkRadio.value
+	const type = document.getElementsByClassName("categoryAreaSelected");
+	if (type[0] == undefined) {
+		document.getElementById("categoryError").hidden = false;
+		setTimeout(function () {
+			document.getElementById("categoryError").hidden = true;
+		}, 2000);
+		return
+	}
+	return type[0].id;
 }
 
 function getEXTRAS() {
@@ -253,7 +275,7 @@ function getBEBIDA() {
 }
 
 //Submit
-$("#orderDrink").click(function () {
+$("#orderDrink").click(async function () {
 	var btn = $(this)[0].id;
 	if (btn == "orderDrink") BEBIDA = getBEBIDA();
 	if (BEBIDA == undefined) return
@@ -261,6 +283,27 @@ $("#orderDrink").click(function () {
 	document.getElementById("questionsSection").style.display = "none";
 	document.getElementById("answersSection").style.display = "flex";
 	console.log(pedido);
+
+	//Fetch Headers
+	const myHeaders = new Headers();
+	myHeaders.append("Content-Type", "application/json");
+
+	//Fetch requestOptions
+	const requestOptions = {
+		mode: 'cors',
+		method: 'POST',
+		headers: myHeaders,
+		body: JSON.stringify(pedido)
+	};
+
+	//Fetch
+	fetch("http://127.0.0.1:8080/api/pedido", requestOptions)
+		.then(response => response.text())
+		.then(result => {
+			console.log(result)
+
+		}).catch(error => console.log('error', error));
+
 })
 
 //back

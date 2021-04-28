@@ -69,14 +69,14 @@
                     <br><br>
                     <div class="row">
                         <div class="col-sm-6">
-                            <div id="entregar" class="typeArea">
-                                <img src="img/home-delivery.png" class="typeImg">
+                            <div class="typeArea">
+                                <img id="entregar" src="img/home-delivery.png" class="typeImg">
                                 <div>Entrega</div>
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div id="levantar" class="typeArea">
-                                <img src="img/take.png" class="typeImg">
+                            <div class="typeArea">
+                                <img id="levantar" src="img/take.png" class="typeImg">
                                 <div>Levantar</div>
                             </div>
                         </div>
@@ -162,16 +162,26 @@
                 </fieldset>
 
                 <fieldset>
-                    <h2 class="fs-title">Categoria Pretendida</h2>
-                    <br><br>
-                    <div id="categoryArea">
-                        <label class="container2">
-                            <div>carne</div>
-                            <input type="radio" checked="checked" name="category" value="carnes">
-                            <span class="checkmark"></span>
-                        </label>
+                    <h2 class="fs-title">Categoria Favorita</h2>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea">
+                                <img id="carnes" src="img/extra.png" class="categoryImg">
+                                <div>Carnes</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea">
+                                <img id="carnes" src="img/extra.png" class="categoryImg">
+                                <div>Carnes</div>
+                            </div>
+                        </div>
+
+                        
                     </div>
                     <br>
+                    <div hidden id="categoryError">Seleciona uma opção para continuar</div>
                     <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                     <input id="orderCategory" type="button" name="next" class="next action-button" value="Next" />
                 </fieldset>

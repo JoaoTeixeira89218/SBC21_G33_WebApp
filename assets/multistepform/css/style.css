@@ -882,3 +882,44 @@ textarea.input100 {
   max-height: 100%;
   border-radius: 20px;
 }
+
+.categoryArea{
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  color: #000;
+}
+
+.categoryImg:hover{
+  background-color: #ffffff;
+  filter: brightness(80%);
+}
+
+.categoryAreaSelected{
+  background-color: #ffffff;
+  filter: brightness(80%);
+}
+
+.categoryImg{
+  height: auto;
+  width: 200px;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 20px;
+}
+
+
+
+.col-sm-20{
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  float: left;
+  width: 20%;
+}
+
+.m-t-20{
+  margin-top: 20px;
+}
