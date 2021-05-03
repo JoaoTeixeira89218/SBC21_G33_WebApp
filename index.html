@@ -27,22 +27,72 @@
 
     <!-- MultiStep Form -->
     <div id="answersSection" class="container-contact100" style="display: none;">
-
         <div class="wrap-contact100">
             <form class="contact100-form validate-form">
                 <span class="contact100-form-title">
-                    Say Hello!
+                    Recomendação!
                 </span>
+
+                <div class="table-responsive">
+                    <table class="table table-hover" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Prato</th>
+                                <th>Categorias</th>
+                                <th>Restaurante</th>
+                                <th>Tempo</th>
+                                <th>Preço</th>
+                                <th>Localização</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th></th>
+                                <th>Prato</th>
+                                <th>Categorias</th>
+                                <th>Restaurante</th>
+                                <th>Tempo</th>
+                                <th>Preço</th>
+                                <th>Localização</th>
+                            </tr>
+                        </tfoot>
+                        <tbody id="showResult">
+
+                        </tbody>
+                    </table>
+
+
+                </div>
 
                 <div class="container-contact100-form-btn">
                     <div class="wrap-contact100-form-btn">
                         <div class="contact100-form-bgbtn"></div>
                         <button id="backBtn" class="contact100-form-btn">
-                            <span>
-                                Go back
-                                <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
-                            </span>
+                            <span>Voltar ao inicio</span>
                         </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <div id="processinfSection" class="container-contact100" style="display: none;">
+        <div class="wrap-contact100">
+            <form class="contact100-form validate-form">
+                <span class="contact100-form-title">
+                    A processar pedido!
+                </span>
+
+                <!--<div class="processing">Processing ...</div>-->
+
+                <div class="load-wrapp">
+                    <div class="load-3">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
                     </div>
                 </div>
             </form>
@@ -83,7 +133,7 @@
                     </div>
                     <br>
                     <div hidden id="typeError">Seleciona um tipo de serviço</div>
-                    <input id="orderType" type="button" name="next" class="next action-button" value="Next" />
+                    <input id="orderType" type="button" name="next" class="next action-button" value="Proximo" />
                 </fieldset>
 
                 <fieldset>
@@ -107,8 +157,8 @@
                         </label>
                     </div>
                     <br>
-                    <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                    <input id="orderPrice" type="button" name="next" class="next action-button" value="Next" />
+                    <input type="button" name="previous" class="previous action-button-previous" value="Anterior" />
+                    <input id="orderPrice" type="button" name="next" class="next action-button" value="Proximo" />
                 </fieldset>
 
                 <fieldset>
@@ -132,8 +182,8 @@
                         </label>
                     </div>
                     <br>
-                    <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                    <input id="orderDuration" type="button" name="next" class="next action-button" value="Next" />
+                    <input type="button" name="previous" class="previous action-button-previous" value="Anterior" />
+                    <input id="orderDuration" type="button" name="next" class="next action-button" value="Proximo" />
                 </fieldset>
 
                 <fieldset>
@@ -157,8 +207,9 @@
                         </label>
                     </div>
                     <br>
-                    <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                    <input id="orderClassification" type="button" name="next" class="next action-button" value="Next" />
+                    <input type="button" name="previous" class="previous action-button-previous" value="Anterior" />
+                    <input id="orderClassification" type="button" name="next" class="next action-button"
+                        value="Proximo" />
                 </fieldset>
 
                 <fieldset>
@@ -167,23 +218,100 @@
                     <div class="row">
                         <div class="col-sm-20 m-t-20">
                             <div class="categoryArea">
-                                <img id="carnes" src="img/extra.png" class="categoryImg">
+                                <img id="carnes" src="img/carnes.png" class="categoryImg">
                                 <div>Carnes</div>
                             </div>
                         </div>
                         <div class="col-sm-20 m-t-20">
                             <div class="categoryArea">
-                                <img id="carnes" src="img/extra.png" class="categoryImg">
-                                <div>Carnes</div>
+                                <img id="portuguesa" src="img/portuguesa.png" class="categoryImg">
+                                <div>Portuguesa</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea">
+                                <img id="peixe" src="img/peixe.png" class="categoryImg">
+                                <div>Peixe</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea">
+                                <img id="salada" src="img/salada.png" class="categoryImg">
+                                <div>Saladas</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea">
+                                <img id="vegetariana" src="img/vegetariana.png" class="categoryImg">
+                                <div>Vegetariano</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea">
+                                <img id="pizza" src="img/pizza.png" class="categoryImg">
+                                <div>Pizza</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea">
+                                <img id="fast food" src="img/fast food.png" class="categoryImg">
+                                <div>Fast Food</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea">
+                                <img id="hamburguer" src="img/hamburger.png" class="categoryImg">
+                                <div>Hamburguer</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea">
+                                <img id="churrasco" src="img/churrasco.png" class="categoryImg">
+                                <div>Churrasco</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea">
+                                <img id="italiana" src="img/italiana.png" class="categoryImg">
+                                <div>Italiano</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea">
+                                <img id="sobremesa" src="img/sobremesa.png" class="categoryImg">
+                                <div>Sobremesa</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea">
+                                <img id="massa" src="img/massa.png" class="categoryImg">
+                                <div>Massa</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea">
+                                <img id="marisco" src="img/marisco.png" class="categoryImg">
+                                <div>Marisco</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea">
+                                <img id="japonesa" src="img/japonesa.png" class="categoryImg">
+                                <div>Japonesa</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea">
+                                <img id="sushi" src="img/sushi.png" class="categoryImg">
+                                <div>Sushi</div>
                             </div>
                         </div>
 
-                        
                     </div>
                     <br>
                     <div hidden id="categoryError">Seleciona uma opção para continuar</div>
-                    <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                    <input id="orderCategory" type="button" name="next" class="next action-button" value="Next" />
+                    <input type="button" name="previous" class="previous action-button-previous" value="Anterior" />
+                    <input id="orderCategory" type="button" name="next" class="next action-button" value="Proximo" />
                 </fieldset>
 
                 <fieldset>
@@ -205,8 +333,8 @@
                     </div>
                     <br>
                     <div hidden id="extraError">Seleciona uma opção para continuar</div>
-                    <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                    <input id="orderExtra" type="button" name="next" class="next action-button" value="Next" />
+                    <input type="button" name="previous" class="previous action-button-previous" value="Anterior" />
+                    <input id="orderExtra" type="button" name="next" class="next action-button" value="Proximo" />
                 </fieldset>
 
                 <fieldset>
@@ -228,8 +356,8 @@
                     </div>
                     <br>
                     <div hidden id="drinkError">Seleciona uma opção para submeter</div>
-                    <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                    <input id="orderDrink" type="button" name="submit" class="submit action-button" value="Submit" />
+                    <input type="button" name="previous" class="previous action-button-previous" value="Anterior" />
+                    <input id="orderDrink" type="button" name="submit" class="submit action-button" value="Submeter" />
                 </fieldset>
 
             </form>

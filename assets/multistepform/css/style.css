@@ -903,13 +903,11 @@ textarea.input100 {
 
 .categoryImg{
   height: auto;
-  width: 200px;
+  width: 110px;
   max-width: 100%;
-  max-height: 100%;
   border-radius: 20px;
+  max-height: 110px;
 }
-
-
 
 .col-sm-20{
   position: relative;
@@ -922,4 +920,102 @@ textarea.input100 {
 
 .m-t-20{
   margin-top: 20px;
+}
+
+
+.processing{
+  position:absolute;
+  top:50%;
+  left:50%;
+  text-align:center;
+  width:250px;
+  margin:-5px 0 0 -125px;
+  height: 8px;
+  background-color: #ddd;
+  border-radius:4px;
+  line-height:2em;
+}
+
+.processing:before
+{
+  position: relative;
+  background: #98C24E;
+  -webkit-animation: progress 3s infinite;
+  animation: progress 3s infinite;
+  border-radius:4px;
+  display:block;
+  content:'';
+  height:8px;
+}
+
+@-webkit-keyframes progress
+{
+  0% {left: 0; width: 25%;}
+  50% {left: 75%; width: 25%;}
+  100% {left: 0; width: 25%;}
+}
+
+@keyframes progress
+{
+  0% {left: 0; width: 25%;}
+  50% {left: 75%; width: 25%;}
+  100% {left: 0; width: 25%;}
+}
+
+
+
+
+
+
+
+
+
+.load-wrapp {
+  margin: 0 10px 10px 0;
+  padding: 20px 20px 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.load-wrapp p {
+  padding: 0 0 20px;
+}
+.load-wrapp:last-child {
+  margin-right: 0;
+}
+
+.line {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  background-color: #4b9cdb;
+}
+
+.load-3 .line:nth-last-child(1) {
+  animation: loadingC 0.6s 0.1s linear infinite;
+}
+.load-3 .line:nth-last-child(2) {
+  animation: loadingC 0.6s 0.2s linear infinite;
+}
+.load-3 .line:nth-last-child(3) {
+  animation: loadingC 0.6s 0.3s linear infinite;
+}
+
+@keyframes loadingC {
+  0 {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, 15px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+
+.imgResult{
+  max-height: 90px;
+  width: auto;
 }

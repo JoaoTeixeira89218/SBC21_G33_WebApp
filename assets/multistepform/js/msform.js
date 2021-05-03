@@ -25,8 +25,6 @@ $(".next").click(function () {
 	if (btn == "orderExtra") EXTRAS = getEXTRAS();
 	if (EXTRAS == null) return
 
-	loadJSON();
-
 	if (animating) return false;
 	animating = true;
 
@@ -174,14 +172,14 @@ let CATEGORIA = "";
 let EXTRAS = "";
 let BEBIDA = "";
 
-function loadJSON() {
-	pedido.tipo = TIPO;
-	pedido.preco = PRECO;
-	pedido.duracao = DURACAO;
-	pedido.classificacao = CLASSIFICACAO;
-	pedido.categoria = CATEGORIA;
-	pedido.extras = EXTRAS;
-	pedido.bebida = BEBIDA;
+function loadJSON(pedidoFinal) {
+	pedidoFinal.tipo = TIPO;
+	pedidoFinal.preco = PRECO;
+	pedidoFinal.duracao = DURACAO;
+	pedidoFinal.classificacao = CLASSIFICACAO;
+	pedidoFinal.categoria = CATEGORIA;
+	pedidoFinal.extras = EXTRAS;
+	pedidoFinal.bebida = BEBIDA;
 }
 
 
@@ -275,14 +273,40 @@ function getBEBIDA() {
 }
 
 //Submit
-$("#orderDrink").click(async function () {
+$("#orderDrink").click(function () {
 	var btn = $(this)[0].id;
 	if (btn == "orderDrink") BEBIDA = getBEBIDA();
 	if (BEBIDA == undefined) return
-	loadJSON();
-	document.getElementById("questionsSection").style.display = "none";
-	document.getElementById("answersSection").style.display = "flex";
+
+	var pedidoFinal = {};
+	loadJSON(pedidoFinal);
+	submeterPedido(pedidoFinal);
+})
+
+//back
+$("#backBtn").click(function (evt) {
+	evt.preventDefault();
+	location.reload();
+})
+
+
+async function submeterPedido(pedido) {
+	let conteudo = "";
 	console.log(pedido);
+
+	const data = {
+		"tipo": "entregar",
+		"preco": "preco_0_7",
+		"duracao": "duracao_e_0_20",
+		"classificacao": "'classificacao_46_47'",
+		"categoria": "carnes",
+		"extras": "extras_nao_incluidos",
+		"bebida": "bebida_nao_incluida"
+	}
+	console.log(data)
+
+	document.getElementById("questionsSection").style.display = "none";
+	document.getElementById("processinfSection").style.display = 'flex';
 
 	//Fetch Headers
 	const myHeaders = new Headers();
@@ -291,23 +315,42 @@ $("#orderDrink").click(async function () {
 	//Fetch requestOptions
 	const requestOptions = {
 		mode: 'cors',
+		method: 'GET',
+		redirect: 'follow'
+	};
+
+	const requestOptions1 = {
+		mode: 'cors',
 		method: 'POST',
 		headers: myHeaders,
-		body: JSON.stringify(pedido)
+		body: JSON.stringify(data),
+		credentials: 'include'
 	};
 
 	//Fetch
-	fetch("http://127.0.0.1:8080/api/pedido", requestOptions)
+	//fetch('http://127.0.0.1:8080/api/pedido/query?tipo=entregar&preco=preco_0_7&duracao=duracao_e_0_20&classificacao=classificacao_46_47&categoria=carnes&extras=extras_nao_incluidos&bebida=bebida_nao_incluida', requestOptions)
+	fetch("http://127.0.0.1:8080/api/pedido/query?tipo=" + pedido.tipo + "&preco=" + pedido.preco + "&duracao=" + pedido.duracao + "&classificacao=" + pedido.classificacao + "&categoria=" + pedido.categoria + "&extras=" + pedido.extras + "&bebida=" + pedido.bebida, requestOptions)
+		//fetch('http://127.0.0.1:8080/pedido', requestOptions1)
 		.then(response => response.text())
 		.then(result => {
-			console.log(result)
+			console.log(JSON.parse(result));
 
-		}).catch(error => console.log('error', error));
+			for (const recomendacao of JSON.parse(result)) {
+				conteudo += "<tr><td><img class='imgResult' src='" + recomendacao.imagem + "'></td>";
+				conteudo += "<td>" + recomendacao.nome + "</td>";
+				conteudo += "<td>" + recomendacao.nome + "</td>";
+				conteudo += "<td>" + recomendacao.categoria + "</td>";
+				conteudo += "<td>" + recomendacao.restaurante + "</td>";
+				conteudo += "<td>" + recomendacao.duracaoMin + " a " + recomendacao.duracaoMax + "</td>";
+				conteudo += "<td>" + recomendacao.localizacao + "</td></tr>";
+			}
+			document.getElementById("showResult").innerHTML = conteudo;
+			document.getElementById("processinfSection").style.display = 'none';
+			document.getElementById("answersSection").style.display = "flex";
 
-})
-
-//back
-$("#backBtn").click(function (evt) {
-	evt.preventDefault();
-	location.reload();;
-})
+		}).catch(error => {
+			document.getElementById("processinfSection").style.display = 'none';
+			document.getElementById("answersSection").style.display = "flex";
+			console.log('error', error)
+		});
+}
