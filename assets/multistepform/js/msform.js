@@ -363,8 +363,8 @@ async function submeterPedidoManual(pedido) {
 	};
 
 	//Fetch
-	fetch('http://127.0.0.1:8080/api/pedido/query?tipo=entregar&preco=preco_0_7&duracao=duracao_e_0_20&classificacao=classificacao_46_47&categoria=carnes&extras=extras_nao_incluidos&bebida=bebida_nao_incluida', requestOptions)
-	//fetch("http://127.0.0.1:8080/api/pedido/query?tipo=" + pedido.tipo + "&preco=" + pedido.preco + "&duracao=" + pedido.duracao + "&classificacao=" + pedido.classificacao + "&categoria=" + pedido.categoria + "&extras=" + pedido.extras + "&bebida=" + pedido.bebida, requestOptions)
+	//fetch('http://127.0.0.1:8080/api/pedido/query?tipo=entregar&preco=preco_0_7&duracao=duracao_e_0_20&classificacao=classificacao_46_47&categoria=carnes&extras=extras_nao_incluidos&bebida=bebida_nao_incluida', requestOptions)
+	fetch("http://127.0.0.1:8080/api/pedido/query?tipo=" + pedido.tipo + "&preco=" + pedido.preco + "&duracao=" + pedido.duracao + "&classificacao=" + pedido.classificacao + "&categoria=" + pedido.categoria + "&extras=" + pedido.extras + "&bebida=" + pedido.bebida, requestOptions)
 		//fetch('http://127.0.0.1:8080/pedido', requestOptions1)
 		.then(response => response.text())
 		.then(result => {
