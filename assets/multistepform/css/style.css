@@ -9,11 +9,12 @@
 
 html {
     height: 100%;
-    background: #a64bf4;
+ /*   background: #a64bf4;
     background: -webkit-linear-gradient(45deg, #00dbde, #fc00ff);
     background: -o-linear-gradient(45deg, #00dbde, #fc00ff);
     background: -moz-linear-gradient(45deg, #00dbde, #fc00ff);
-    background: linear-gradient(45deg, #00dbde, #fc00ff);
+    background: linear-gradient(45deg, #00dbde, #fc00ff);*/
+    background: linear-gradient(to top right, #ffff99 0%, #0066ff 100%);
     /*background: #6441A5; /* fallback for old browsers */
     /*background: -webkit-linear-gradient(to left, #6441A5, #2a0845); /* Chrome 10-25, Safari 5.1-6 */
 }
@@ -38,8 +39,8 @@ body {
     box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
     padding: 20px 30px;
     box-sizing: border-box;
-    width: 80%;
-    margin: 0 10%;
+    width: 100%;
+    /*margin: 0 10%;*/
 
     /*stacking fieldsets above each other*/
     position: relative;
@@ -67,7 +68,7 @@ body {
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
-    border: 1px solid #ee0979;
+    border: 1px solid #3399ff;
     outline-width: 0;
     transition: All 0.5s ease-in;
     -webkit-transition: All 0.5s ease-in;
@@ -78,7 +79,7 @@ body {
 /*buttons*/
 #msform .action-button {
     width: 100px;
-    background: #ee0979;
+    background: #3399ff;
     font-weight: bold;
     color: white;
     border: 0 none;
@@ -89,12 +90,12 @@ body {
 }
 
 #msform .action-button:hover, #msform .action-button:focus {
-    box-shadow: 0 0 0 2px white, 0 0 0 3px #ee0979;
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #3399ff;
 }
 
 #msform .action-button-previous {
     width: 100px;
-    background: #C5C5F1;
+    background: #acc5da;
     font-weight: bold;
     color: white;
     border: 0 none;
@@ -178,7 +179,7 @@ body {
 /*marking active/completed steps green*/
 /*The number of the step and the connector before it = green*/
 #progressbar li.active:before, #progressbar li.active:after {
-    background: #ee0979;
+    background: #1d58fa;
     color: white;
 }
 
@@ -323,11 +324,13 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background: #a64bf4;
+/*  background: #a64bf4;
   background: -webkit-linear-gradient(45deg, #00dbde, #fc00ff);
   background: -o-linear-gradient(45deg, #00dbde, #fc00ff);
   background: -moz-linear-gradient(45deg, #00dbde, #fc00ff);
-  background: linear-gradient(45deg, #00dbde, #fc00ff);
+  background: linear-gradient(45deg, #00dbde, #fc00ff);*/
+  background: linear-gradient(to top right, #ffff99 0%, #0066ff 100%);
+  
   
 }
 
@@ -467,11 +470,12 @@ textarea.input100 {
   z-index: -1;
   width: 300%;
   height: 100%;
-  background: #a64bf4;
+  /*background: #a64bf4;
   background: -webkit-linear-gradient(left, #00dbde, #fc00ff, #00dbde, #fc00ff);
   background: -o-linear-gradient(left, #00dbde, #fc00ff, #00dbde, #fc00ff);
   background: -moz-linear-gradient(left, #00dbde, #fc00ff, #00dbde, #fc00ff);
-  background: linear-gradient(left, #00dbde, #fc00ff, #00dbde, #fc00ff);
+  background: linear-gradient(left, #00dbde, #fc00ff, #00dbde, #fc00ff);*/
+  background: linear-gradient(to top right, #ffff99 0%, #0066ff 100%);
   top: 0;
   left: -100%;
 
@@ -694,20 +698,22 @@ textarea.input100 {
 }
 
 .select2-container .select2-results__option[aria-selected="true"] {
-  background: #a64bf4;
+/*  background: #a64bf4;
   background: -webkit-linear-gradient(right, #00dbde, #fc00ff);
   background: -o-linear-gradient(right, #00dbde, #fc00ff);
   background: -moz-linear-gradient(right, #00dbde, #fc00ff);
-  background: linear-gradient(right, #00dbde, #fc00ff);
+  background: linear-gradient(right, #00dbde, #fc00ff);*/
+  background: linear-gradient(to top right, #ffff99 0%, #0066ff 100%);
   color: white;
 }
 
 .select2-container .select2-results__option--highlighted[aria-selected] {
-  background: #a64bf4;
+ /* background: #a64bf4;
   background: -webkit-linear-gradient(right, #00dbde, #fc00ff);
   background: -o-linear-gradient(right, #00dbde, #fc00ff);
   background: -moz-linear-gradient(right, #00dbde, #fc00ff);
-  background: linear-gradient(right, #00dbde, #fc00ff);
+  background: linear-gradient(right, #00dbde, #fc00ff);*/
+  background: linear-gradient(to top right, #ffff99 0%, #0066ff 100%);
   color: white;
 }
 
@@ -803,6 +809,32 @@ textarea.input100 {
   height: 22px;
   width: 22px;
   margin-top: -5px;
+}
+
+.optionArea{
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  color: #000;
+}
+
+.optionImg:hover{
+  background-color: #ffffff;
+  filter: brightness(80%);
+}
+
+.optionAreaSelected{
+  background-color: #ffffff;
+  filter: brightness(80%);
+}
+
+.optionImg{
+  height: auto;
+  width: 200px;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 20px;
 }
 
 .typeArea{
@@ -962,14 +994,6 @@ textarea.input100 {
   100% {left: 0; width: 25%;}
 }
 
-
-
-
-
-
-
-
-
 .load-wrapp {
   margin: 0 10px 10px 0;
   padding: 20px 20px 20px;
@@ -1018,4 +1042,30 @@ textarea.input100 {
 .imgResult{
   max-height: 90px;
   width: auto;
+}
+
+
+.optionBtn{
+  width: 200px;
+  background: #3399ff;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 25px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 10px 5px;
+}
+
+
+.optionBtnPrevious{
+  width: 100px;
+  background: #acc5da;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 25px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 10px 5px;
 }

@@ -24,83 +24,40 @@
 </head>
 
 <body>
-
-    <!-- MultiStep Form -->
-    <div id="answersSection" class="container-contact100" style="display: none;">
+    <!-- Options Section -->
+    <div id="optionSection" class="container-contact100" style="display: flex;">
         <div class="wrap-contact100">
             <form class="contact100-form validate-form">
                 <span class="contact100-form-title">
-                    Recomendação!
+                    Escolher uma opção!
                 </span>
-
-                <div class="table-responsive">
-                    <table class="table table-hover" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Prato</th>
-                                <th>Categorias</th>
-                                <th>Restaurante</th>
-                                <th>Tempo</th>
-                                <th>Preço</th>
-                                <th>Localização</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th></th>
-                                <th>Prato</th>
-                                <th>Categorias</th>
-                                <th>Restaurante</th>
-                                <th>Tempo</th>
-                                <th>Preço</th>
-                                <th>Localização</th>
-                            </tr>
-                        </tfoot>
-                        <tbody id="showResult">
-
-                        </tbody>
-                    </table>
-
-
-                </div>
-
-                <div class="container-contact100-form-btn">
-                    <div class="wrap-contact100-form-btn">
-                        <div class="contact100-form-bgbtn"></div>
-                        <button id="backBtn" class="contact100-form-btn">
-                            <span>Voltar ao inicio</span>
-                        </button>
+                <div class=" text-center">
+                    <br><br>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="optionArea">
+                                <img id="conhecimento_manual" src="img/manual.png" class="optionImg">
+                                <div>Aquisição manual de conhecimento</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="optionArea">
+                                <img id="conhecimento_automatico" src="img/auto.png" class="optionImg">
+                                <div>Aquisição automática de conhecimento</div>
+                            </div>
+                        </div>
                     </div>
+                    <br>
+                    <div hidden id="optionError">Seleciona uma opção para obter uma recomendação</div>
+                    <input id="recomendationOption" type="button" class="optionBtn" value="Proximo" />
                 </div>
             </form>
         </div>
     </div>
 
 
-
-    <div id="processinfSection" class="container-contact100" style="display: none;">
-        <div class="wrap-contact100">
-            <form class="contact100-form validate-form">
-                <span class="contact100-form-title">
-                    A processar pedido!
-                </span>
-
-                <!--<div class="processing">Processing ...</div>-->
-
-                <div class="load-wrapp">
-                    <div class="load-3">
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-
-    <div id="questionsSection" class="row">
+    <!--Questions Section-->
+    <div id="questionsSection" class="row" style="display: none;">
         <div class="col-md-6 col-md-offset-3">
             <form id="msform">
                 <!-- progressbar -->
@@ -114,6 +71,7 @@
                     <li>Bebida</li>
                 </ul>
                 <!-- fieldsets -->
+                <!-- Type Area -->
                 <fieldset>
                     <h2 class="fs-title">Tipo de Serviço</h2>
                     <br><br>
@@ -133,9 +91,11 @@
                     </div>
                     <br>
                     <div hidden id="typeError">Seleciona um tipo de serviço</div>
+                    <button id="recomendationOptionPrevious" type="button" class="optionBtnPrevious">Opções</button>
                     <input id="orderType" type="button" name="next" class="next action-button" value="Proximo" />
                 </fieldset>
 
+                <!-- Price Area -->
                 <fieldset>
                     <h2 class="fs-title">Margem de Preço</h2>
                     <br><br>
@@ -161,6 +121,7 @@
                     <input id="orderPrice" type="button" name="next" class="next action-button" value="Proximo" />
                 </fieldset>
 
+                <!-- Duration Area -->
                 <fieldset>
                     <h2 class="fs-title">Duração Desejada</h2>
                     <br><br>
@@ -186,6 +147,7 @@
                     <input id="orderDuration" type="button" name="next" class="next action-button" value="Proximo" />
                 </fieldset>
 
+                <!-- Classification Area -->
                 <fieldset>
                     <h2 class="fs-title">Classificação Aplativa</h2>
                     <br><br>
@@ -212,6 +174,7 @@
                         value="Proximo" />
                 </fieldset>
 
+                <!-- Category Area -->
                 <fieldset>
                     <h2 class="fs-title">Categoria Favorita</h2>
                     <br>
@@ -314,6 +277,7 @@
                     <input id="orderCategory" type="button" name="next" class="next action-button" value="Proximo" />
                 </fieldset>
 
+                <!-- Extra Area -->
                 <fieldset>
                     <h2 class="fs-title">Extras</h2>
                     <br><br>
@@ -337,6 +301,7 @@
                     <input id="orderExtra" type="button" name="next" class="next action-button" value="Proximo" />
                 </fieldset>
 
+                <!-- Drinks Area -->
                 <fieldset>
                     <h2 class="fs-title">Bebida</h2>
                     <br><br>
@@ -359,12 +324,74 @@
                     <input type="button" name="previous" class="previous action-button-previous" value="Anterior" />
                     <input id="orderDrink" type="button" name="submit" class="submit action-button" value="Submeter" />
                 </fieldset>
-
             </form>
+        </div>
+    </div>
 
-            <!-- link to designify.me code snippets -->
 
-            <!-- /.link to designify.me code snippets -->
+    <!-- Processing Section -->
+    <div id="processingSection" class="container-contact100" style="display: none;">
+        <div class="wrap-contact100">
+            <form class="contact100-form validate-form">
+                <span class="contact100-form-title">
+                    A processar pedido!
+                </span>
+                <div class="load-wrapp">
+                    <div class="load-3">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Answers Section -->
+    <div id="answersSection" class="container-contact100" style="display: none;">
+        <div class="wrap-contact100">
+            <form class="contact100-form validate-form">
+                <span class="contact100-form-title">
+                    Recomendação!
+                </span>
+                <div class="table-responsive">
+                    <table class="table table-hover" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Prato</th>
+                                <th>Categorias</th>
+                                <th>Restaurante</th>
+                                <th>Tempo</th>
+                                <th>Preço</th>
+                                <th>Localização</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th></th>
+                                <th>Prato</th>
+                                <th>Categorias</th>
+                                <th>Restaurante</th>
+                                <th>Tempo</th>
+                                <th>Preço</th>
+                                <th>Localização</th>
+                            </tr>
+                        </tfoot>
+                        <tbody id="showResult">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="container-contact100-form-btn">
+                    <div class="wrap-contact100-form-btn text-center">
+                        <button id="backBtn" class="optionBtn">
+                            <span>Voltar ao inicio</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     <!-- /.MultiStep Form -->
