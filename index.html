@@ -52,7 +52,7 @@
     </div>
 
 
-    <!--Questions Section-->
+    <!--Questions Section A1-->
     <div id="questionsSection_A1" class="row" style="display: none;">
         <div class="col-md-6 col-md-offset-3">
             <form id="msform">
@@ -338,6 +338,285 @@
         </div>
     </div>
 
+    <!--Questions Section A2-->
+    <div id="questionsSection_A2" class="row" style="display: none;">
+        <div class="col-md-6 col-md-offset-3">
+            <form id="msform">
+                <!-- progressbar -->
+                <ul id="progressbar">
+                    <li class="active">Categoria</li>
+                    <li>Género</li>
+                    <li>Idade</li>
+                    <li>Dieta</li>
+                    <li>Preço</li>
+                    <li>Classificação</li>
+                    <li>Duração</li>
+                </ul>
+                <!-- fieldsets -->
+                <!-- Category Area -->
+                <fieldset>
+                    <h2 class="fs-title">Categoria à qual deseja recomendação</h2>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea2">
+                                <img id="carnes" src="img/carnes.png" class="categoryImg2">
+                                <div>Carnes</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea2">
+                                <img id="portuguesa" src="img/portuguesa.png" class="categoryImg2">
+                                <div>Portuguesa</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea2">
+                                <img id="peixe" src="img/peixe.png" class="categoryImg2">
+                                <div>Peixe</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea2">
+                                <img id="salada" src="img/salada.png" class="categoryImg2">
+                                <div>Salada</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea2">
+                                <img id="vegetariana" src="img/vegetariana.png" class="categoryImg2">
+                                <div>Vegetariana</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea2">
+                                <img id="pizza" src="img/pizza.png" class="categoryImg2">
+                                <div>Pizza</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea2">
+                                <img id="fast food" src="img/fast food.png" class="categoryImg2">
+                                <div>Fast Food</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea2">
+                                <img id="hamburguer" src="img/hamburger.png" class="categoryImg2">
+                                <div>Hamburguer</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea2">
+                                <img id="churrasco" src="img/churrasco.png" class="categoryImg2">
+                                <div>Churrasco</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea2">
+                                <img id="italiana" src="img/italiana.png" class="categoryImg2">
+                                <div>Italiana</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea2">
+                                <img id="sobremesa" src="img/sobremesa.png" class="categoryImg2">
+                                <div>Sobremesa</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea2">
+                                <img id="massa" src="img/massa.png" class="categoryImg2">
+                                <div>Massa</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea2">
+                                <img id="marisco" src="img/marisco.png" class="categoryImg2">
+                                <div>Marisco</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea2">
+                                <img id="japonesa" src="img/japonesa.png" class="categoryImg2">
+                                <div>Japonesa</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-20 m-t-20">
+                            <div class="categoryArea2">
+                                <img id="sushi" src="img/sushi.png" class="categoryImg2">
+                                <div>Sushi</div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div hidden id="categoryError2">Seleciona uma opção para continuar</div>
+                    <button id="recomendationOptionPrevious2" type="button" class="optionBtnPrevious">Opções</button>
+                    <input id="orderCategory2" type="button" name="next2" class="next2 action-button" value="Proximo" />
+                </fieldset>
+
+                <!-- Gender Area -->
+                <fieldset>
+                    <h2 class="fs-title">Género</h2>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="genderArea">
+                                <img id="bebida_incluida" src="img/masculino.png" class="genderImg">
+                                <div>Masculino</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="genderArea">
+                                <img id="bebida_nao_incluida" src="img/feminino.png" class="genderImg">
+                                <div>Feminino</div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div hidden id="genderError">Seleciona uma opção para continuar</div>
+                    <input type="button" name="previous2" class="previous2 action-button-previous" value="Anterior" />
+                    <input id="orderGender" type="button" name="next2" class="next2 action-button" value="Proximo" />
+                </fieldset>
+
+                <!-- Age Area -->
+                <fieldset>
+                    <h2 class="fs-title">Idade</h2>
+                    <br><br>
+                    <div class="testedisplay" id="ageArea2">
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="age2" value="0-17">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">Até 17 anos</div>
+                        </label>
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="age2" value="18-40">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">Enter 18 e 40</div>
+                        </label>
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="age2" value="41-100">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">Enter 41 e 100</div>
+                        </label>
+                    </div>
+                    <br>
+                    <div hidden id="ageError2">Seleciona uma opção para continuar</div>
+                    <input type="button" name="previous2" class="previous2 action-button-previous" value="Anterior" />
+                    <input id="orderAge2" type="button" name="next2" class="next2 action-button" value="Proximo" />
+                </fieldset>
+
+                <!-- Diet Area -->
+                <fieldset>
+                    <h2 class="fs-title">A sua dieta é saudável?</h2>
+                    <br><br>
+                    <div class="testedisplay" id="dietArea">
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="diet" value="saudavel">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">Sim</div>
+                        </label>
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="diet" value="nao_saudavel">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">Não</div>
+                        </label>
+                    </div>
+                    <br>
+                    <div hidden id="dietError">Seleciona uma opção para continuar</div>
+                    <input type="button" name="previous2" class="previous2 action-button-previous" value="Anterior" />
+                    <input id="orderDiet" type="button" name="next2" class="next2 action-button" value="Proximo" />
+                </fieldset>
+
+                <!-- Price Area -->
+                <fieldset>
+                    <h2 class="fs-title">Margem de Preço</h2>
+                    <br><br>
+                    <div class="testedisplay" id="priceArea">
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="price2" value="preco_baixo">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">Até 7€</div>
+                        </label>
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="price2" value="preco_medio">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">Entre 8 a 12€</div>
+                        </label>
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="price2" value="preco_alto">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">A partir de 13€</div>
+                        </label>
+                    </div>
+                    <br>
+                    <div hidden id="priceError2">Seleciona uma opção para continuar</div>
+                    <input type="button" name="previous2" class="previous2 action-button-previous" value="Anterior" />
+                    <input id="orderPrice2" type="button" name="next2" class="next2 action-button" value="Proximo" />
+                </fieldset>
+
+                <!-- Classification Area -->
+                <fieldset>
+                    <h2 class="fs-title">Classificação Aplativa</h2>
+                    <br><br>
+                    <div class="testedisplay" id="classificationArea2">
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="classification2" value="classificacao_baixo">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">Até 4.5 <img src="img/Star_icon_stylized.svg.png" class="starIcon">
+                            </div>
+                        </label>
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="classification2" value="classificacao_media">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">Enter 4.6 a 4.7 <img src="img/Star_icon_stylized.svg.png"
+                                    class="starIcon"></div>
+                        </label>
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="classification2" value="classificacao_boa">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">A partir de 4.8 <img src="img/Star_icon_stylized.svg.png"
+                                    class="starIcon"></div>
+                        </label>
+                    </div>
+                    <br>
+                    <div hidden id="classificationError2">Seleciona uma opção para continuar</div>
+                    <input type="button" name="previous2" class="previous2 action-button-previous" value="Anterior" />
+                    <input id="orderClassification2" type="button" name="next2" class="next2 action-button"
+                        value="Proximo" />
+                </fieldset>
+
+                <!-- Duration Area -->
+                <fieldset>
+                    <h2 class="fs-title">Duração da entrega</h2>
+                    <br><br>
+                    <div class="testedisplay" id="dutationArea">
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="duration" value="tempo_pouco">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">Até 10 minutos</div>
+                        </label>
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="duration" value="tempo_medio">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">De 10 a 15 minutos</div>
+                        </label>
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="duration" value="tempo_alto">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">De 16 a 20 minuto</div>
+                        </label>
+                    </div>
+                    <br>
+                    <div hidden id="durationError">Seleciona uma opção para submeter</div>
+                    <input type="button" name="previous2" class="previous2 action-button-previous" value="Anterior" />
+                    <input id="orderDuration" type="button" name="submit" class="submit action-button"
+                        value="Submeter" />
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
 
     <!-- Processing Section -->
     <div id="processingSection" class="container-contact100" style="display: none;">
@@ -396,7 +675,52 @@
                 </div>
                 <div class="container-contact100-form-btn">
                     <div class="wrap-contact100-form-btn text-center">
-                        <button id="backBtn" class="optionBtn">
+                        <button class="backBtn optionBtn">
+                            <span>Voltar ao inicio</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Answers Section A2 -->
+    <div id="answersSection_A2" class="container-contact100" style="display: none;">
+        <div class="wrap-contact100">
+            <form class="contact100-form validate-form">
+                <span class="contact100-form-title">
+                    Recomendação!
+                </span>
+                <div class="table-responsive">
+
+                </div>
+                <div class="container-contact100-form-btn">
+                    <div class="wrap-contact100-form-btn text-center">
+                        <button class="backBtn optionBtn">
+                            <span>Voltar ao inicio</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- No Answers Section -->
+    <div id="NoAnswersSection" class="container-contact100" style="display: none;">
+        <div class="wrap-contact100">
+            <form class="contact100-form validate-form">
+                <span class="contact100-form-title">
+                    Alguma coisa mal na execução...
+                </span>
+                <div style="text-align: center;">
+                    <img src="img/tenor.gif">
+                </div>
+                <div class="container-contact100-form-btn">
+                    <div class="wrap-contact100-form-btn text-center">
+                        <button id="backBtn2" class="optionBtn">
+                            <span>Tentar outra vez</span>
+                        </button>
+                        <button class="backBtn optionBtn">
                             <span>Voltar ao inicio</span>
                         </button>
                     </div>

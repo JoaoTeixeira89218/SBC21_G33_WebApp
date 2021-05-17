@@ -889,6 +889,58 @@ textarea.input100 {
   border-radius: 20px;
 }
 
+.genderArea{
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  color: #000;
+}
+
+.genderImg:hover{
+  background-color: #ffffff;
+  filter: brightness(80%);
+}
+
+.genderAreaSelected{
+  background-color: #ffffff;
+  filter: brightness(80%);
+}
+
+.genderImg{
+  height: auto;
+  width: 200px;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 20px;
+}
+
+.categoryArea2{
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  color: #000;
+}
+
+.categoryImg2:hover{
+  background-color: #ffffff;
+  filter: brightness(80%);
+}
+
+.categoryAreaSelected2{
+  background-color: #ffffff;
+  filter: brightness(80%);
+}
+
+.categoryImg2{
+  height: auto;
+  width: 110px;
+  max-width: 100%;
+  border-radius: 20px;
+  max-height: 110px;
+}
+
 .categoryArea{
   border-radius: 20px;
   margin-left: auto;
