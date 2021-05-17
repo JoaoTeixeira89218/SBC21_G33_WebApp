@@ -11,11 +11,14 @@ $(".next").click(function () {
 	if (btn == "orderType") TIPO = getTIPO();
 	if (TIPO == null) return;
 
-	if (btn == "orderPrice") PRECO = getPRECO(); loadDuration();
+	if (btn == "orderAge") IDADE = getIDADE();
+	if (IDADE == null) return;
+
+	if (btn == "orderPrice") PRECO = getPRECO();
 	if (PRECO == undefined) return;
 
-	if (btn == "orderDuration") DURACAO = getDURACAO();
-	if (DURACAO == undefined) return;
+	if (btn == "orderSpirit") ESPIRITO = getESPIRITO();
+	if (ESPIRITO == undefined) return;
 
 	if (btn == "orderClassification") CLASSIFICACAO = getCLASSIFICACAO();
 	if (CLASSIFICACAO == undefined) return;
@@ -23,8 +26,6 @@ $(".next").click(function () {
 	if (btn == "orderCategory") CATEGORIA = getCATEGORIA();
 	if (CATEGORIA == undefined) return;
 
-	if (btn == "orderExtra") EXTRAS = getEXTRAS();
-	if (EXTRAS == null) return;
 
 	if (animating) return false;
 	animating = true;
@@ -106,12 +107,12 @@ recomendationOption.addEventListener("click", () => {
 	OPCAO = getOPCAO();
 	if (OPCAO == null) return;
 	document.getElementById("optionSection").style.display = 'none';
-	document.getElementById("questionsSection").style.display = 'block';
+	document.getElementById("questionsSection_A1").style.display = 'block';
 })
 
 const recomendationOptionPrevious = document.getElementById("recomendationOptionPrevious");
 recomendationOptionPrevious.addEventListener("click", () => {
-	document.getElementById("questionsSection").style.display = 'none';
+	document.getElementById("questionsSection_A1").style.display = 'none';
 	document.getElementById("optionSection").style.display = 'flex';
 })
 
@@ -143,22 +144,6 @@ $(document).on('click', '.typeArea', function () {
 		}
 	} else {
 		element.classList.add('typeAreaSelected');
-	}
-});
-
-
-//Select extra of order  (imagens)
-$(document).on('click', '.extraArea', function () {
-	var element = $(this)[0].children[0];
-	if ($(".extraAreaSelected")[0]) {
-		if (element.classList.contains('extraAreaSelected')) {
-			element.classList.remove('extraAreaSelected')
-		} else {
-			$(".extraAreaSelected")[0].classList.remove("extraAreaSelected");
-			element.classList.add('extraAreaSelected');
-		}
-	} else {
-		element.classList.add('extraAreaSelected');
 	}
 });
 
@@ -198,22 +183,31 @@ let OPCAO = "";
 let pedido = {}
 let TIPO = "";
 let PRECO = "";
-let DURACAO = "";
+let IDADE = "";
 let CLASSIFICACAO = "";
 let CATEGORIA = "";
-let EXTRAS = "";
+let ESPIRITO = "";
 let BEBIDA = "";
 
-function loadJSON(pedidoFinal) {
-	pedidoFinal.tipo = TIPO;
-	pedidoFinal.preco = PRECO;
-	pedidoFinal.duracao = DURACAO;
-	pedidoFinal.classificacao = CLASSIFICACAO;
-	pedidoFinal.categoria = CATEGORIA;
-	pedidoFinal.extras = EXTRAS;
-	pedidoFinal.bebida = BEBIDA;
+function loadJSON_A1() {
+	pedido.tipo = TIPO;
+	pedido.preco = PRECO;
+	pedido.idade = IDADE;
+	pedido.classificacao = CLASSIFICACAO;
+	pedido.categoria = CATEGORIA;
+	pedido.espirito = ESPIRITO;
+	pedido.bebida = BEBIDA;
 }
 
+function loadJSON_A2() {
+	pedido.tipo = TIPO;
+	pedido.preco = PRECO;
+	pedido.idade = IDADE;
+	pedido.classificacao = CLASSIFICACAO;
+	pedido.categoria = CATEGORIA;
+	pedido.espirito = ESPIRITO;
+	pedido.bebida = BEBIDA;
+}
 
 function loadDuration() {
 	const durationArea = $("#durationArea .container2 input")
@@ -265,19 +259,44 @@ function getTIPO() {
 	return type[0].id;
 }
 
+//Get order price
+function getIDADE() {
+	var checkRadio = document.querySelector('input[name="age"]:checked');
+	if (checkRadio != null) return checkRadio.value;
+	document.getElementById("ageError").hidden = false;
+	setTimeout(function () {
+		document.getElementById("ageError").hidden = true;
+	}, 2000);
+}
+
+//Get order price
 function getPRECO() {
 	var checkRadio = document.querySelector('input[name="price"]:checked');
-	return checkRadio.value
+	if (checkRadio != null) return checkRadio.value;
+	document.getElementById("priceError").hidden = false;
+	setTimeout(function () {
+		document.getElementById("priceError").hidden = true;
+	}, 2000);
 }
 
-function getDURACAO() {
-	var checkRadio = document.querySelector('input[name="duration"]:checked');
-	return checkRadio.value
+//Get client spirit
+function getESPIRITO() {
+	var checkRadio = document.querySelector('input[name="spirit"]:checked');
+	if (checkRadio != null) return checkRadio.value;
+	document.getElementById("spiritError").hidden = false;
+	setTimeout(function () {
+		document.getElementById("spiritError").hidden = true;
+	}, 2000);
 }
 
+//Get classification
 function getCLASSIFICACAO() {
 	var checkRadio = document.querySelector('input[name="classification"]:checked');
-	return checkRadio.value
+	if (checkRadio != null) return checkRadio.value;
+	document.getElementById("classificationError").hidden = false;
+	setTimeout(function () {
+		document.getElementById("classificationError").hidden = true;
+	}, 2000);
 }
 
 function getCATEGORIA() {
@@ -292,17 +311,6 @@ function getCATEGORIA() {
 	return type[0].id;
 }
 
-function getEXTRAS() {
-	const type = document.getElementsByClassName("extraAreaSelected");
-	if (type[0] == undefined) {
-		document.getElementById("extraError").hidden = false;
-		setTimeout(function () {
-			document.getElementById("extraError").hidden = true;
-		}, 2000);
-		return
-	}
-	return type[0].id;
-}
 
 function getBEBIDA() {
 	const type = document.getElementsByClassName("drinkAreaSelected");
@@ -322,11 +330,10 @@ $("#orderDrink").click(function () {
 	if (btn == "orderDrink") BEBIDA = getBEBIDA();
 	if (BEBIDA == undefined) return
 
-	var pedidoFinal = {};
-	loadJSON(pedidoFinal);
-	if (OPCAO == 'conhecimento_manual') submeterPedidoManual(pedidoFinal);
-	if (OPCAO == 'conhecimento_automatico') submeterPedidoAuto(pedidoFinal);
+	if (OPCAO == 'conhecimento_manual')	loadJSON_A1(); submeterPedidoManual();
+	if (OPCAO == 'conhecimento_automatico')loadJSON_A2(); submeterPedidoAuto();
 })
+
 
 //back
 $("#backBtn").click(function (evt) {
@@ -334,38 +341,29 @@ $("#backBtn").click(function (evt) {
 	location.reload();
 })
 
+//Fetch Headers
+const myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
+//Fetch requestOptions
+const requestOptions = {
+	mode: 'cors',
+	method: 'GET',
+	redirect: 'follow'
+};
+
 
 //Conhecimento Manual
-async function submeterPedidoManual(pedido) {
+async function submeterPedidoManual() {
 	let conteudo = "";
 	console.log(pedido);
 
-	document.getElementById("questionsSection").style.display = "none";
+	document.getElementById("questionsSection_A1").style.display = "none";
 	document.getElementById("processingSection").style.display = 'flex';
 
-	//Fetch Headers
-	const myHeaders = new Headers();
-	myHeaders.append("Content-Type", "application/json");
-
-	//Fetch requestOptions
-	const requestOptions = {
-		mode: 'cors',
-		method: 'GET',
-		redirect: 'follow'
-	};
-
-	const requestOptions1 = {
-		mode: 'cors',
-		method: 'POST',
-		headers: myHeaders,
-		body: JSON.stringify(pedido),
-		credentials: 'include'
-	};
-
 	//Fetch
-	//fetch('http://127.0.0.1:8080/api/pedido/query?tipo=entregar&preco=preco_0_7&duracao=duracao_e_0_20&classificacao=classificacao_46_47&categoria=carnes&extras=extras_nao_incluidos&bebida=bebida_nao_incluida', requestOptions)
-	fetch("http://127.0.0.1:8080/api/pedido/query?tipo=" + pedido.tipo + "&preco=" + pedido.preco + "&duracao=" + pedido.duracao + "&classificacao=" + pedido.classificacao + "&categoria=" + pedido.categoria + "&extras=" + pedido.extras + "&bebida=" + pedido.bebida, requestOptions)
-		//fetch('http://127.0.0.1:8080/pedido', requestOptions1)
+	//fetch('http://127.0.0.1:8080/api/tarefa-a1/query?tipo=entregar&preco=preco_0_7&idade=idade_1829&estado_espirito=apressado&classificacao=classificacao_46_47&categoria=carnes&bebida=bebida_nao_incluida', requestOptions)
+	fetch("http://127.0.0.1:8080/api/tarefa-a1/query?tipo=" + pedido.tipo + "&preco=" + pedido.preco + "&idade=" + pedido.idade + "&espirito=" + pedido.espirito +"&classificacao=" + pedido.classificacao + "&categoria=" + pedido.categoria + "&bebida=" + pedido.bebida, requestOptions)
 		.then(response => response.text())
 		.then(result => {
 			console.log(JSON.parse(result));
@@ -381,67 +379,17 @@ async function submeterPedidoManual(pedido) {
 			}
 			document.getElementById("showResult").innerHTML = conteudo;
 			document.getElementById("processingSection").style.display = 'none';
-			document.getElementById("answersSection").style.display = "flex";
+			document.getElementById("answersSection_A1").style.display = "flex";
 
 		}).catch(error => {
 			document.getElementById("processingSection").style.display = 'none';
-			document.getElementById("questionsSection").style.display = "block";
+			document.getElementById("questionsSection_A1").style.display = "block";
 			console.log('error', error)
 		});
 }
 
 //Conhecimento Automático
-async function submeterPedidoAuto(pedido) {
+async function submeterPedidoAuto() {
 	console.log("ola")
-	/*let conteudo = "";
-	console.log(pedido);
 
-	document.getElementById("questionsSection").style.display = "none";
-	document.getElementById("processingSection").style.display = 'flex';
-
-	//Fetch Headers
-	const myHeaders = new Headers();
-	myHeaders.append("Content-Type", "application/json");
-
-	//Fetch requestOptions
-	const requestOptions = {
-		mode: 'cors',
-		method: 'GET',
-		redirect: 'follow'
-	};
-
-	const requestOptions1 = {
-		mode: 'cors',
-		method: 'POST',
-		headers: myHeaders,
-		body: JSON.stringify(pedido),
-		credentials: 'include'
-	};
-
-	//Fetch
-	//fetch('http://127.0.0.1:8080/api/pedido/query?tipo=entregar&preco=preco_0_7&duracao=duracao_e_0_20&classificacao=classificacao_46_47&categoria=carnes&extras=extras_nao_incluidos&bebida=bebida_nao_incluida', requestOptions)
-	fetch("http://127.0.0.1:8080/api/pedido/query?tipo=" + pedido.tipo + "&preco=" + pedido.preco + "&duracao=" + pedido.duracao + "&classificacao=" + pedido.classificacao + "&categoria=" + pedido.categoria + "&extras=" + pedido.extras + "&bebida=" + pedido.bebida, requestOptions)
-		//fetch('http://127.0.0.1:8080/pedido', requestOptions1)
-		.then(response => response.text())
-		.then(result => {
-			console.log(JSON.parse(result));
-
-			for (const recomendacao of JSON.parse(result)) {
-				conteudo += "<tr><td><img class='imgResult' src='" + recomendacao.imagem + "'></td>";
-				conteudo += "<td>" + recomendacao.nome + "</td>";
-				conteudo += "<td>" + recomendacao.categoria + "</td>";
-				conteudo += "<td>" + recomendacao.restaurante + "</td>";
-				conteudo += "<td>" + recomendacao.duracaoMin + " a " + recomendacao.duracaoMax + "</td>";
-				conteudo += "<td>" + recomendacao.preco + " €</td>";
-				conteudo += "<td>" + recomendacao.localizacao + "</td></tr>";
-			}
-			document.getElementById("showResult").innerHTML = conteudo;
-			document.getElementById("processingSection").style.display = 'none';
-			document.getElementById("answersSection").style.display = "flex";
-
-		}).catch(error => {
-			document.getElementById("processingSection").style.display = 'none';
-			document.getElementById("questionsSection").style.display = "block";
-			console.log('error', error)
-		});*/
 }

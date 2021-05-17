@@ -17,10 +17,6 @@
     <!-- Custom styles -->
     <link href="assets/multistepform/css/style.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body>
@@ -57,17 +53,17 @@
 
 
     <!--Questions Section-->
-    <div id="questionsSection" class="row" style="display: none;">
+    <div id="questionsSection_A1" class="row" style="display: none;">
         <div class="col-md-6 col-md-offset-3">
             <form id="msform">
                 <!-- progressbar -->
                 <ul id="progressbar">
                     <li class="active">Serviço</li>
+                    <li>Idade</li>
                     <li>Preço</li>
-                    <li>Duração</li>
+                    <li>Espírito</li>
                     <li>Classificação</li>
                     <li>Categoria</li>
-                    <li>Extras</li>
                     <li>Bebida</li>
                 </ul>
                 <!-- fieldsets -->
@@ -95,80 +91,118 @@
                     <input id="orderType" type="button" name="next" class="next action-button" value="Proximo" />
                 </fieldset>
 
+                <!-- Age Area -->
+                <fieldset>
+                    <h2 class="fs-title">Idade</h2>
+                    <br><br>
+                    <div class="testedisplay" id="ageArea">
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="age" value="idade_0_17">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">Até 17 anos</div>
+                        </label>
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="age" value="idade_18_29">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">Enter 18 e 29</div>
+                        </label>
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="age" value="idade_30_40">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">Enter 30 e 40</div>
+                        </label>
+                    </div>
+                    <br>
+                    <div hidden id="ageError">Seleciona uma opção para continuar</div>
+                    <input type="button" name="previous" class="previous action-button-previous" value="Anterior" />
+                    <input id="orderAge" type="button" name="next" class="next action-button" value="Proximo" />
+                </fieldset>
+
                 <!-- Price Area -->
                 <fieldset>
                     <h2 class="fs-title">Margem de Preço</h2>
                     <br><br>
-                    <div id="priceArea">
-                        <label class="container2">
-                            <div>Até 7€</div>
-                            <input type="radio" checked="checked" name="price" value="preco_0_7">
-                            <span class="checkmark"></span>
+                    <div class="testedisplay" id="priceArea">
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="price" value="preco_0_7">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">Até 7€</div>
                         </label>
-                        <label class="container2">
-                            <div>Entre 8 a 12€</div>
-                            <input type="radio" name="price" value="preco_>7_12">
-                            <span class="checkmark"></span>
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="price" value="preco_>7_12">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">Entre 8 a 12€</div>
                         </label>
-                        <label class="container2">
-                            <div>A partir de 13€</div>
-                            <input type="radio" name="price" value="preco_>12">
-                            <span class="checkmark"></span>
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="price" value="preco_>12">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">A partir de 13€</div>
                         </label>
                     </div>
                     <br>
+                    <div hidden id="priceError">Seleciona uma opção para continuar</div>
                     <input type="button" name="previous" class="previous action-button-previous" value="Anterior" />
                     <input id="orderPrice" type="button" name="next" class="next action-button" value="Proximo" />
                 </fieldset>
 
-                <!-- Duration Area -->
+                <!-- Spirit Area -->
                 <fieldset>
-                    <h2 class="fs-title">Duração Desejada</h2>
+                    <h2 class="fs-title">Estado de Espírito</h2>
                     <br><br>
-                    <div id="durationArea">
-                        <label class="container2">
-                            <div>One</div>
-                            <input type="radio" checked="checked" name="duration" value="One">
-                            <span class="checkmark"></span>
+                    <div class="testedisplay" id="SpiritArea">
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="spirit" value="alegre">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">Alegre</div>
                         </label>
-                        <label class="container2">
-                            <div>Two</div>
-                            <input type="radio" name="duration" value="Two">
-                            <span class="checkmark"></span>
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="spirit" value="apressado">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">Apressado</div>
                         </label>
-                        <label class="container2">
-                            <div>Three</div>
-                            <input type="radio" name="duration" value="Three">
-                            <span class="checkmark"></span>
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="spirit" value="paciente">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">Paciente</div>
+                        </label>
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="spirit" value="indiferente">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">Indiferente</div>
                         </label>
                     </div>
                     <br>
+                    <div hidden id="spiritError">Seleciona uma opção para continuar</div>
                     <input type="button" name="previous" class="previous action-button-previous" value="Anterior" />
-                    <input id="orderDuration" type="button" name="next" class="next action-button" value="Proximo" />
+                    <input id="orderSpirit" type="button" name="next" class="next action-button" value="Proximo" />
                 </fieldset>
 
                 <!-- Classification Area -->
                 <fieldset>
                     <h2 class="fs-title">Classificação Aplativa</h2>
                     <br><br>
-                    <div id="classificationArea">
-                        <label class="container2">
-                            <div>Até 4.5 <img src="img/Star_icon_stylized.svg.png" class="starIcon"></div>
-                            <input type="radio" checked="checked" name="classification" value="classificacao_<=45">
-                            <span class="checkmark"></span>
+                    <div class="testedisplay" id="classificationArea">
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="classification" value="classificacao_<=45">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">Até 4.5 <img src="img/Star_icon_stylized.svg.png" class="starIcon">
+                            </div>
                         </label>
-                        <label class="container2">
-                            <div>Enter 4.6 a 4.7 <img src="img/Star_icon_stylized.svg.png" class="starIcon"></div>
-                            <input type="radio" name="classification" value="classificacao_46_47">
-                            <span class="checkmark"></span>
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="classification" value="classificacao_46_47">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">Enter 4.6 a 4.7 <img src="img/Star_icon_stylized.svg.png"
+                                    class="starIcon"></div>
                         </label>
-                        <label class="container2">
-                            <div>A partir de 4.8 <img src="img/Star_icon_stylized.svg.png" class="starIcon"></div>
-                            <input type="radio" name="classification" value="classificacao_>47">
-                            <span class="checkmark"></span>
+                        <label class="rad-label">
+                            <input type="radio" class="rad-input" name="classification" value="classificacao_>47">
+                            <div class="rad-design"></div>
+                            <div class="rad-text">A partir de 4.8 <img src="img/Star_icon_stylized.svg.png"
+                                    class="starIcon"></div>
                         </label>
                     </div>
                     <br>
+                    <div hidden id="classificationError">Seleciona uma opção para continuar</div>
                     <input type="button" name="previous" class="previous action-button-previous" value="Anterior" />
                     <input id="orderClassification" type="button" name="next" class="next action-button"
                         value="Proximo" />
@@ -277,30 +311,6 @@
                     <input id="orderCategory" type="button" name="next" class="next action-button" value="Proximo" />
                 </fieldset>
 
-                <!-- Extra Area -->
-                <fieldset>
-                    <h2 class="fs-title">Extras</h2>
-                    <br><br>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="extraArea">
-                                <img id="extras_incluidos" src="img/extra.png" class="extraImg">
-                                <div>Com extras</div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="extraArea">
-                                <img id="extras_nao_incluidos" src="img/extra-no.png" class="extraImg">
-                                <div>Sem Extras</div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div hidden id="extraError">Seleciona uma opção para continuar</div>
-                    <input type="button" name="previous" class="previous action-button-previous" value="Anterior" />
-                    <input id="orderExtra" type="button" name="next" class="next action-button" value="Proximo" />
-                </fieldset>
-
                 <!-- Drinks Area -->
                 <fieldset>
                     <h2 class="fs-title">Bebida</h2>
@@ -349,7 +359,7 @@
 
 
     <!-- Answers Section -->
-    <div id="answersSection" class="container-contact100" style="display: none;">
+    <div id="answersSection_A1" class="container-contact100" style="display: none;">
         <div class="wrap-contact100">
             <form class="contact100-form validate-form">
                 <span class="contact100-form-title">
