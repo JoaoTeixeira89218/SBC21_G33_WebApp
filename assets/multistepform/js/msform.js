@@ -601,8 +601,8 @@ async function submeterPedidoManual() {
 	document.getElementById("processingSection").style.display = 'flex';
 
 	//Fetch
-	//fetch('http://127.0.0.1:8080/api/tarefa-a1/query?tipo=entregar&preco=preco_0_7&idade=idade_1829&estado_espirito=apressado&classificacao=classificacao_46_47&categoria=carnes&bebida=bebida_nao_incluida', requestOptions)
-	fetch("http://127.0.0.1:8080/api/tarefa-a1/query?tipo=" + pedido.tipo + "&preco=" + pedido.preco + "&idade=" + pedido.idade + "&espirito=" + pedido.espirito + "&classificacao=" + pedido.classificacao + "&categoria=" + pedido.categoria + "&bebida=" + pedido.bebida, requestOptions)
+	//fetch('http://127.0.0.1:8080/api/tarefa-a1/query?tipo=entregar&preco=preco_0_7&idade=idade_18_29&estado_espirito=apressado&classificacao=classificacao_46_47&categoria=carnes&bebida=bebida_nao_incluida', requestOptions)
+	fetch("http://127.0.0.1:8080/api/tarefa-a1/query?tipo=" + pedido.tipo + "&preco=" + pedido.preco + "&idade=" + pedido.idade + "&estado_espirito=" + pedido.espirito + "&classificacao=" + pedido.classificacao + "&categoria=" + pedido.categoria + "&bebida=" + pedido.bebida, requestOptions)
 		.then(response => response.text())
 		.then(result => {
 			console.log(JSON.parse(result));
@@ -636,17 +636,13 @@ async function submeterPedidoAuto() {
 	document.getElementById("processingSection").style.display = 'flex';
 
 	//Fetch
-	//fetch('http://127.0.0.1:8080/api/tarefa-a1/query?tipo=entregar&preco=preco_0_7&idade=idade_1829&estado_espirito=apressado&classificacao=classificacao_46_47&categoria=carnes&bebida=bebida_nao_incluida', requestOptions)
-	fetch("http://127.0.0.1:8080/api/tarefa-a1/query?tipo=" + pedido.tipo + "&preco=" + pedido.preco + "&idade=" + pedido.idade + "&espirito=" + pedido.espirito + "&classificacao=" + pedido.classificacao + "&categoria=" + pedido.categoria + "&bebida=" + pedido.bebida, requestOptions)
+	//fetch('http://127.0.0.1:8080/api/tarefa-a2/query?sexo=masculino&categoria=hamburguer&tempo=tempo_medio&idade=0-17&preco=preco_baixo&classificacao=classificacao_boa&dieta=nao_saudavel', requestOptions)
+	fetch("http://127.0.0.1:8080/api/tarefa-a2/query?sexo=" + pedido2.sexo + "&categoria=" + pedido2.categorias + "&tempo=" + pedido2.duracao + "&idade=" + pedido2.idade + "&preco=" + pedido2.preco + "&classificacao=" + pedido2.classificacao + "&dieta=" + pedido2.dieta, requestOptions)
 		.then(response => response.text())
 		.then(result => {
-			console.log(JSON.parse(result));
+			console.log(result == 'yes')
 
-
-
-
-
-			document.getElementById("showResult").innerHTML = conteudo;
+			document.getElementById("showResult2").innerHTML = resposta(result);
 			document.getElementById("processingSection").style.display = 'none';
 			document.getElementById("answersSection_A2").style.display = "flex";
 
@@ -655,4 +651,12 @@ async function submeterPedidoAuto() {
 			document.getElementById("NoAnswersSection").style.display = "flex";
 			console.log('error', error)
 		});
+}
+
+function resposta(result) {
+	switch (result) {
+		case 'yes': return "Boa escolhar, aconselhamos-te a essa categoria de comida";
+		case 'no': return "Não te aconcelhamos a comer esse tipo de comida"; 
+		default: return "Não te conseguimos dar uma resposta concreta"; 
+	}
 }
