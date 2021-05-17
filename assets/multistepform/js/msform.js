@@ -629,7 +629,6 @@ async function submeterPedidoManual() {
 
 //Conhecimento Automático
 async function submeterPedidoAuto() {
-	let conteudo = "";
 	console.log(pedido2);
 
 	document.getElementById("questionsSection_A2").style.display = "none";
@@ -640,7 +639,6 @@ async function submeterPedidoAuto() {
 	fetch("http://127.0.0.1:8080/api/tarefa-a2/query?sexo=" + pedido2.sexo + "&categoria=" + pedido2.categorias + "&tempo=" + pedido2.duracao + "&idade=" + pedido2.idade + "&preco=" + pedido2.preco + "&classificacao=" + pedido2.classificacao + "&dieta=" + pedido2.dieta, requestOptions)
 		.then(response => response.text())
 		.then(result => {
-			console.log(result == 'yes')
 
 			document.getElementById("showResult2").innerHTML = resposta(result);
 			document.getElementById("processingSection").style.display = 'none';
@@ -655,8 +653,8 @@ async function submeterPedidoAuto() {
 
 function resposta(result) {
 	switch (result) {
-		case 'yes': return "Boa escolhar, aconselhamos-te a essa categoria de comida";
-		case 'no': return "Não te aconcelhamos a comer esse tipo de comida"; 
-		default: return "Não te conseguimos dar uma resposta concreta"; 
+		case 'yes': return "Boa escolhar, aconselhamos-te a essa categoria de comida!";
+		case 'no': return "Não te aconcelhamos a comer esse tipo de comida!";
+		default: return "Não te conseguimos dar uma resposta concreta!";
 	}
 }
