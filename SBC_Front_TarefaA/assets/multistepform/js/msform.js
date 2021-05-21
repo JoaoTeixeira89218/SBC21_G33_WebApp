@@ -589,7 +589,6 @@ $("#backBtn2").click(function (evt) {
 	} else {
 		document.getElementById("questionsSection_A2").style.display = "block";
 	}
-
 })
 
 //Conhecimento Manual
@@ -608,6 +607,7 @@ async function submeterPedidoManual() {
 			console.log(JSON.parse(result));
 
 			for (const recomendacao of JSON.parse(result)) {
+				conteudo += `<tr><td>${recomendacao.probabilidade}</td></tr>`;
 				conteudo += "<tr><td><img class='imgResult' src='" + recomendacao.imagem + "'></td>";
 				conteudo += "<td>" + recomendacao.nome + "</td>";
 				conteudo += "<td>" + recomendacao.categoria + "</td>";
@@ -653,8 +653,8 @@ async function submeterPedidoAuto() {
 
 function resposta(result) {
 	switch (result) {
-		case 'yes': return "Boa escolhar, aconselhamos-te a essa categoria de comida!";
-		case 'no': return "Não te aconcelhamos a comer esse tipo de comida!";
+		case 'yes': return "Boa escolha, aconselhamos-te a essa categoria de comida!";
+		case 'no': return "Não te aconcelhamos a a essa categoria de comida!";
 		default: return "Não te conseguimos dar uma resposta concreta!";
 	}
 }
