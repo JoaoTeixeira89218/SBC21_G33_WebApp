@@ -1179,3 +1179,8 @@ textarea.input100 {
   display: grid;
     place-content: center;
 }
+
+#resultImg{
+  height: 110px;
+  width: 110px;
+}

@@ -639,8 +639,25 @@ async function submeterPedidoAuto() {
 	fetch("http://127.0.0.1:8080/api/tarefa-a2/query?sexo=" + pedido2.sexo + "&categoria=" + pedido2.categorias + "&tempo=" + pedido2.duracao + "&idade=" + pedido2.idade + "&preco=" + pedido2.preco + "&classificacao=" + pedido2.classificacao + "&dieta=" + pedido2.dieta, requestOptions)
 		.then(response => response.text())
 		.then(result => {
-
-			document.getElementById("showResult2").innerHTML = resposta(result);
+			let resposta = "";
+			switch (result) {
+				case 'yes':
+					resposta = `Boa escolha, a categoria que escolheste "${pedido2.categorias}" parece ser uma boa opção!`;
+					document.getElementById("resultImg").src = `img/${pedido2.categorias}.png`;
+					document.getElementById("resultCategory").hidden = false;
+					document.getElementById("resultCategory").innerHTML = pedido2.categorias;
+					break;
+				case 'no':
+					resposta = `"${pedido2.categorias}"? Não te aconcelhamos a a essa categoria, secalhar é melhor escolher outra!`;
+					document.getElementById("resultImg").src = `img/${pedido2.categorias}.png`;
+					document.getElementById("resultCategory").hidden = false;
+					document.getElementById("resultCategory").innerHTML = pedido2.categorias;
+					break;
+				default: resposta = `Não te conseguimos dar uma resposta concreta!`;
+					document.getElementById("resultImg").src = "img/tenor.gif";
+					break;
+			}
+			document.getElementById("showResult2").innerHTML = resposta;
 			document.getElementById("processingSection").style.display = 'none';
 			document.getElementById("answersSection_A2").style.display = "flex";
 
@@ -649,12 +666,4 @@ async function submeterPedidoAuto() {
 			document.getElementById("NoAnswersSection").style.display = "flex";
 			console.log('error', error)
 		});
-}
-
-function resposta(result) {
-	switch (result) {
-		case 'yes': return "Boa escolha, aconselhamos-te a essa categoria de comida!";
-		case 'no': return "Não te aconcelhamos a a essa categoria de comida!";
-		default: return "Não te conseguimos dar uma resposta concreta!";
-	}
 }
