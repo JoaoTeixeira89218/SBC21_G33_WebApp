@@ -327,7 +327,6 @@ $(document).ready(function () {
 
 //Show clients options for selection B2
 $(document).ready(function () {
-	console.log("ola")
 	$('#numberDestArea2 input[type=radio]').click(function () {
 		var checkRadio = document.querySelector('input[name="numberDest2"]:checked');
 		if (checkRadio.value == 1) {
@@ -519,17 +518,14 @@ async function TransicaoEstados(pedido) {
 	document.getElementById("questionsSection_B1").style.display = "none";
 	document.getElementById("processingSection").style.display = 'flex';
 
-	if (numberDest == 1) FETCH = `http://127.0.0.1:8080/api/tarefa-b1-obj1/query?cliente=${pedido.cliente}&metodo=${pedido.metodo}`;
+	if (numberDest == 1) FETCH = `http://127.0.0.1:8080/api/tarefa-b1-obj2/query?clienteA=${pedido.cliente}&clienteB=${pedido.cliente}&metodo=${pedido.metodo}`;
 	if (numberDest == 2) {
-		console.log(pedido.cliente)
 		if (pedido.cliente.length < 2) {
 			FETCH = `http://127.0.0.1:8080/api/tarefa-b1-obj2/query?clienteA=${pedido.cliente[0]}&clienteB=${pedido.cliente[0]}&metodo=${pedido.metodo}`;
 		} else {
 			FETCH = `http://127.0.0.1:8080/api/tarefa-b1-obj2/query?clienteA=${pedido.cliente[0]}&clienteB=${pedido.cliente[1]}&metodo=${pedido.metodo}`;
 		}
-
 	}
-	console.log(FETCH);
 
 	//Fetch
 	fetch(FETCH, requestOptions)
@@ -562,17 +558,14 @@ async function HillClimbing(pedido) {
 	console.log(pedido);
 
 
-	if (numberDest == 1) FETCH = `http://127.0.0.1:8080/api/tarefa-b1-obj1/query?cliente=${pedido.cliente}&metodo=${pedido.metodo}`;
-	if (numberDest == 2) {
-		console.log(pedido.cliente)
+	if (numberDest2 == 1) FETCH = `http://127.0.0.1:8080/api/tarefa-b2-obj2/query?clienteA=${pedido.cliente}&clienteB=${pedido.cliente}&metodo=${pedido.objetivo}`;
+	if (numberDest2 == 2) {
 		if (pedido.cliente.length < 2) {
-			FETCH = `http://127.0.0.1:8080/api/tarefa-b1-obj2/query?clienteA=${pedido.cliente[0]}&clienteB=${pedido.cliente[0]}&metodo=${pedido.metodo}`;
+			FETCH = `http://127.0.0.1:8080/api/tarefa-b2-obj2/query?clienteA=${pedido.cliente[0]}&clienteB=${pedido.cliente[0]}&metodo=${pedido.objetivo}`;
 		} else {
-			FETCH = `http://127.0.0.1:8080/api/tarefa-b1-obj2/query?clienteA=${pedido.cliente[0]}&clienteB=${pedido.cliente[1]}&metodo=${pedido.metodo}`;
+			FETCH = `http://127.0.0.1:8080/api/tarefa-b2-obj2/query?clienteA=${pedido.cliente[0]}&clienteB=${pedido.cliente[1]}&metodo=${pedido.objetivo}`;
 		}
-
 	}
-	console.log(FETCH);
 
 	//Fetch
 	fetch(FETCH, requestOptions)
@@ -586,17 +579,15 @@ async function HillClimbing(pedido) {
 			switch (OBJETIVO) {
 				case 'lucro':
 					document.getElementById("showLucro").hidden = false;
-					document.getElementById("lucroS2").innerHTML = result.lucro;
+					document.getElementById("lucroS2").innerHTML = result.totaleval;
 					break;
 				case 'tempo':
 					document.getElementById("showTempo").hidden = false;
-					document.getElementById("tempoS2").innerHTML = result.lucro;
+					document.getElementById("tempoS2").innerHTML = result.totaleval;
 					break;
 				case 'ambos':
-					document.getElementById("showLucro").hidden = false;
-					document.getElementById("lucroS2").innerHTML = result.lucro;
-					document.getElementById("showTempo").hidden = false;
-					document.getElementById("lucroS").innerHTML = result.lucro;
+					document.getElementById("showValor").hidden = false;
+					document.getElementById("valorS2").innerHTML = result.totaleval;
 					break;
 			}
 			document.getElementById("processingSection").style.display = 'none';
@@ -616,42 +607,62 @@ function preencherImagem(caminho) {
 		if (i + 1 >= arr.length) return;
 		if ((arr[i] == "restaurante" && arr[i + 1] == "cliente1") || (arr[i + 1] == "restaurante" && arr[i] == "cliente1")) {
 			// mostrar imagem 1
+			document.getElementsByClassName("Moleza1")[0].hidden = false;
+			document.getElementsByClassName("Moleza1")[1].hidden = false;
 			console.log("1");
 		}
 		if ((arr[i] == "restaurante" && arr[i + 1] == "cliente4") || (arr[i + 1] == "restaurante" && arr[i] == "cliente4")) {
 			// mostrar imagem 3
+			document.getElementsByClassName("Moleza3")[0].hidden = false;
+			document.getElementsByClassName("Moleza3")[1].hidden = false;
 			console.log("3");
 		}
 		if ((arr[i] == "cliente1" && arr[i + 1] == "cliente2") || arr[i + 1] == "cliente1" && arr[i] == "cliente2") {
 			// mostrar imagem 5
+			document.getElementsByClassName("Moleza5")[0].hidden = false;
+			document.getElementsByClassName("Moleza5")[1].hidden = false;
 			console.log("5");
 		}
 		if ((arr[i] == "cliente1" && arr[i + 1] == "cliente4") || (arr[i + 1] == "cliente1" && arr[i] == "cliente4")) {
 			// mostrar imagem 2
+			document.getElementsByClassName("Moleza2")[0].hidden = false;
+			document.getElementsByClassName("Moleza2")[1].hidden = false;
 			console.log("2");
 		}
 		if ((arr[i] == "cliente1" && arr[i + 1] == "cliente5") || (arr[i + 1] == "cliente1" && arr[i] == "cliente5")) {
 			// mostrar imagem 4
+			document.getElementsByClassName("Moleza4")[0].hidden = false;
+			document.getElementsByClassName("Moleza4")[1].hidden = false;
 			console.log("4");
 		}
 		if ((arr[i] == "cliente2" && arr[i + 1] == "cliente4") || (arr[i + 1] == "cliente2" && arr[i] == "cliente4")) {
 			// mostrar imagem 6
+			document.getElementsByClassName("Moleza6")[0].hidden = false;
+			document.getElementsByClassName("Moleza6")[1].hidden = false;
 			console.log("6");
 		}
 		if ((arr[i] == "cliente2" && arr[i + 1] == "cliente5") || (arr[i + 1] == "cliente2" && arr[i] == "cliente5")) {
 			// mostrar imagem 8
+			document.getElementsByClassName("Moleza8")[0].hidden = false;
+			document.getElementsByClassName("Moleza8")[1].hidden = false;
 			console.log("8");
 		}
 		if ((arr[i] == "cliente2" && arr[i + 1] == "cliente3") || (arr[i + 1] == "cliente2" && arr[i] == "cliente3")) {
 			// mostrar imagem 9
+			document.getElementsByClassName("Moleza9")[0].hidden = false;
+			document.getElementsByClassName("Moleza9")[1].hidden = false;
 			console.log("9");
 		}
 		if ((arr[i] == "cliente3" && arr[i + 1] == "cliente4") || (arr[i + 1] == "cliente3" && arr[i] == "cliente4")) {
 			// mostrar imagem 10
+			document.getElementsByClassName("Moleza10")[0].hidden = false;
+			document.getElementsByClassName("Moleza10")[1].hidden = false;
 			console.log("10");
 		}
 		if ((arr[i] == "cliente3" && arr[i + 1] == "cliente5") || (arr[i + 1] == "cliente3" && arr[i] == "cliente5")) {
 			// mostrar imagem 7
+			document.getElementsByClassName("Moleza7")[0].hidden = false;
+			document.getElementsByClassName("Moleza7")[1].hidden = false;
 			console.log("7");
 		}
 	}
