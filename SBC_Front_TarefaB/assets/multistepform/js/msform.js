@@ -94,7 +94,6 @@ $(".next2").click(function () {
 	if (OBJETIVO == null) return;
 
 	loadJSON_B2();
-	console.log(opcoesB2)
 
 	if (animating) return false;
 	animating = true;

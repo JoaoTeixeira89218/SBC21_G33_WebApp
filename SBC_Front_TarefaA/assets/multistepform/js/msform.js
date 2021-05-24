@@ -602,11 +602,13 @@ async function submeterPedidoManual() {
 	//Fetch
 	//fetch('http://127.0.0.1:8080/api/tarefa-a1/query?tipo=entregar&preco=preco_0_7&idade=idade_18_29&estado_espirito=apressado&classificacao=classificacao_46_47&categoria=carnes&bebida=bebida_nao_incluida', requestOptions)
 	fetch("http://127.0.0.1:8080/api/tarefa-a1/query?tipo=" + pedido.tipo + "&preco=" + pedido.preco + "&idade=" + pedido.idade + "&estado_espirito=" + pedido.espirito + "&classificacao=" + pedido.classificacao + "&categoria=" + pedido.categoria + "&bebida=" + pedido.bebida, requestOptions)
-		.then(response => response.text())
+		.then(response => response.json())
 		.then(result => {
-			console.log(JSON.parse(result));
+			console.log(result);
+			result.sort((a, b) => parseFloat(b.probabilidade) - parseFloat(a.probabilidade));
+			console.log(result);
 
-			for (const recomendacao of JSON.parse(result)) {
+			for (const recomendacao of result) {
 				conteudo += `<tr><td>${recomendacao.probabilidade}</td></tr>`;
 				conteudo += "<tr><td><img class='imgResult' src='" + recomendacao.imagem + "'></td>";
 				conteudo += "<td>" + recomendacao.nome + "</td>";
@@ -648,7 +650,7 @@ async function submeterPedidoAuto() {
 					document.getElementById("resultCategory").innerHTML = pedido2.categorias;
 					break;
 				case 'no':
-					resposta = `"${pedido2.categorias}"? Não te aconcelhamos a a essa categoria, secalhar é melhor escolher outra!`;
+					resposta = `"${pedido2.categorias}"? Não te aconcelhamos a essa categoria, secalhar é melhor escolher outra!`;
 					document.getElementById("resultImg").src = `img/${pedido2.categorias}.png`;
 					document.getElementById("resultCategory").hidden = false;
 					document.getElementById("resultCategory").innerHTML = pedido2.categorias;
