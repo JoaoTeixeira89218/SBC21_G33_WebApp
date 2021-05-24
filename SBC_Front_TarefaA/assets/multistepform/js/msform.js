@@ -609,7 +609,7 @@ async function submeterPedidoManual() {
 			console.log(result);
 
 			for (const recomendacao of result) {
-				conteudo += `<tr><td>${recomendacao.probabilidade}</td></tr>`;
+				conteudo += `<tr><td>${recomendacao.probabilidade}</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>`;
 				conteudo += "<tr><td><img class='imgResult' src='" + recomendacao.imagem + "'></td>";
 				conteudo += "<td>" + recomendacao.nome + "</td>";
 				conteudo += "<td>" + recomendacao.categoria + "</td>";
