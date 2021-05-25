@@ -578,11 +578,11 @@ async function HillClimbing(pedido) {
 			switch (OBJETIVO) {
 				case 'lucro':
 					document.getElementById("showLucro").hidden = false;
-					document.getElementById("lucroS2").innerHTML = result.totaleval;
+					document.getElementById("lucroS2").innerHTML = result.totaleval + " €";
 					break;
 				case 'tempo':
 					document.getElementById("showTempo").hidden = false;
-					document.getElementById("tempoS2").innerHTML = result.totaleval;
+					document.getElementById("tempoS2").innerHTML = result.totaleval + " minutos";
 					break;
 				case 'ambos':
 					document.getElementById("showValor").hidden = false;
